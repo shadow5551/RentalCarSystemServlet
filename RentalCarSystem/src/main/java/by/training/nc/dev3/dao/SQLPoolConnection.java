@@ -5,9 +5,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.sql.*;
 
-/**
- * Created by dima on 12.4.17.
- */
+
 public class SQLPoolConnection {
         private static InitialContext ic;
         private static DataSource ds;

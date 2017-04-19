@@ -1,7 +1,7 @@
 package by.training.nc.dev3.model;
 
 
-public class Car implements {
+public class Car{
     private int id;
     private String brand;
     private String model;

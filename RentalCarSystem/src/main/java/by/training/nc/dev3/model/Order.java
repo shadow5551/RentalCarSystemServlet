@@ -1,6 +1,5 @@
 package by.training.nc.dev3.model;
 
-import dao.Identified;
 import java.util.Date;
 import java.util.Objects;
 
@@ -107,7 +106,6 @@ public class Order {
         if (other == null) return false;
         if(this.getClass() != other.getClass()) return false;
         Order otherObj = (Order) other;
-        if (!Objects.equals(this.getId(), otherObj.getId())) return false;
         return true;
     }
 

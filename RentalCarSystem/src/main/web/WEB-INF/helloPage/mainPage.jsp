@@ -5,8 +5,8 @@
 <html>
 <head>
     <title>CarRentalSystem</title>
-   <link rel="stylesheet" type="text/css" href="/css/helloPage/car.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/helloPage/bar.css"/>
+   <link rel="stylesheet" type="text/css" href="/assets/css/helloPage/car.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/css/helloPage/bar.css"/>
 </head>
 <body>
 <ul>

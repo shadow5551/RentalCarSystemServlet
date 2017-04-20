@@ -9,8 +9,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>404 error</title>
-    <link rel="stylesheet" type="text/css" href="/jsp/errorpages/ErrorPage404.css">
-    <link rel="stylesheet" type="text/css" href="/jsp/errorpages/face.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/error/ErrorPage404.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/error/face.css">
 </head>
 <body>
 <div class="container">

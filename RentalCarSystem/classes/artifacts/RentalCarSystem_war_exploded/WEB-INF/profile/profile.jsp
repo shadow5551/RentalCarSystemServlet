@@ -20,8 +20,8 @@
     <!-- Website Font style -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 
-    <link rel="stylesheet" type="text/css" href="/css/profile/profile.css"/>
-    <script type="text/javascript" src="css/profile/profile.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/css/profile/profile.css"/>
+    <script type="text/javascript" src="/assets/js/profile/profile.js"></script>
 </head>
 <body>
 

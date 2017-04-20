@@ -1,8 +1,9 @@
 package by.training.nc.dev3.model;
 
 
+import by.training.nc.dev3.dao.Identified;
 
-public class User {
+public class User implements Identified<Integer> {
     private Integer idUser;
     private String login;
     private String password;
@@ -82,5 +83,8 @@ public class User {
                 .format("id : %5s login: %5s password: %5s numberPassport: %5s",idUser, login, password, numberOfPassport);
     }
 
-
+    @Override
+    public Integer getId() {
+        return idUser;
+    }
 }

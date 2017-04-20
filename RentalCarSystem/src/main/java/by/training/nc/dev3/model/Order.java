@@ -1,12 +1,12 @@
 package by.training.nc.dev3.model;
 
+
+import by.training.nc.dev3.dao.Identified;
+
 import java.util.Date;
 import java.util.Objects;
 
-/**
- * Created by dima on 19.3.17.
- */
-public class Order {
+public class Order implements Identified<Integer> {
     private int id;
     private int idCar;
     private int idStatus;
@@ -106,8 +106,12 @@ public class Order {
         if (other == null) return false;
         if(this.getClass() != other.getClass()) return false;
         Order otherObj = (Order) other;
+        if (!Objects.equals(this.getId(), otherObj.getId())) return false;
         return true;
     }
 
-
+    @Override
+    public Integer getId() {
+        return id;
+    }
 }

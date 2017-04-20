@@ -1,7 +1,10 @@
 package by.training.nc.dev3.model;
 
 
-public class Car{
+import by.training.nc.dev3.dao.Identified;
+
+
+public class Car implements Identified<Integer> {
     private int id;
     private String brand;
     private String model;
@@ -66,5 +69,8 @@ public class Car{
                 .format("brand: %5s model: %5s count:%5s price: %5s", brand, model, countOfCars,pricePerDay);
     }
 
-
+    @Override
+    public Integer getId() {
+        return id;
+    }
 }

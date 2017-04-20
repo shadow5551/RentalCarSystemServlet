@@ -1,16 +1,14 @@
 package by.training.nc.dev3.dao;
 
 
-
 import by.training.nc.dev3.exception.CustomGenericException;
 
 import javax.naming.NamingException;
+import java.io.Serializable;
 import java.sql.*;
 import java.util.List;
 
-/**
- * Created by dima on 12.4.17.
- */
+
 public abstract class AbstractDao<T extends Identified<PK>, PK extends Integer> implements GenericDao<T, PK> {
 
     /**

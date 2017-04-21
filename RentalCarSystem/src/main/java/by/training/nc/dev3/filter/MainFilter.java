@@ -2,14 +2,13 @@ package by.training.nc.dev3.filter;
 
 
 
+import by.training.nc.dev3.i18n.Locale;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.servlet.jsp.jstl.core.Config;
 import java.io.IOException;
-
-import static javax.servlet.jsp.jstl.core.Config.FMT_LOCALE;
 
 
 @WebFilter("/*")
@@ -27,7 +26,7 @@ public class MainFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         System.out.println("Filter");
         session = request.getSession();
-        Config.set( session, FMT_LOCALE, new java.util.Locale("es_ES"));
+        servletRequest.setAttribute("locale", Locale.getLang(servletRequest));
         filterChain.doFilter(servletRequest,servletResponse);
     }
 

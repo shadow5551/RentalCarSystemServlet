@@ -16,21 +16,12 @@
     <li><a href="#news">News</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#about">About</a></li>
-    <!--<a href="?locale=es" >ru</a>-->
-   <!-- <a href = "SetLocale?local=en">en</a>
-    <a href = "SetLocale?local=es">es</a>-->
     <li><form action="/">
         <input type="submit" name="locale" value="en">
     </form></li>
     <li><form action="/">
         <input type="submit" name="locale" value="es">
     </form></li>
-   <!-- <form>
-        <select id="language" name="language" onchange="submit()">
-            <option value="en" ${language == 'en' ? 'selected' : ''}>ENGLISH</option>
-            <option value="es" ${language == 'es' ? 'selected' : ''}>ESpan</option>
-        </select>
-    </form>-->
     <ri><a href="Register">Join Us</a></ri>
     <ri><a href="Login">Login</a></ri>
 </ul>

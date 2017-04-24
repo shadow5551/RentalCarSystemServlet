@@ -1,6 +1,8 @@
 package by.training.nc.dev3.cotroller;
 
 
+import by.training.nc.dev3.validation.ValidationLoginService;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,6 +37,7 @@ public class Login extends HttpServlet
         System.out.println(login+password);
         HttpSession session;
         session = request.getSession();
+        session.setAttribute("currentUserId", ValidationLoginService.getId());
         response.sendRedirect("/Profile");
     }
 }

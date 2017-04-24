@@ -2,6 +2,8 @@ package by.training.nc.dev3.cotroller;
 
 
 
+import by.training.nc.dev3.dao.OrderDaoImpl;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,7 +26,12 @@ public class Profile extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException
     {
-
+        OrderDaoImpl orderDao = new OrderDaoImpl();
+        RequestDispatcher dispatcher=getServletContext().getRequestDispatcher( "/WEB-INF/profile/profile.jsp" );
+        request.setAttribute("orders", orderDao.getAllBYCondition("WHERE User_idUser = " + request.getSession().getAttribute("currentUserId")));
+        System.out.println(orderDao.getAllBYCondition("WHERE User_idUser = " + request.getSession().getAttribute("currentUserId")));
+        System.out.println(request);
+        dispatcher.forward( request, response );
     }
 
     @Override

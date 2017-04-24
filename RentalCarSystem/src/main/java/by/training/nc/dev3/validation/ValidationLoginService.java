@@ -21,4 +21,8 @@ public class ValidationLoginService {
         }
         return false;
     }
+
+    public static int getId() {
+        return id;
+    }
 }

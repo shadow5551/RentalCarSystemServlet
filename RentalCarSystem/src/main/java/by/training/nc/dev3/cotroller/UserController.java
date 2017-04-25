@@ -23,7 +23,7 @@ import by.training.nc.dev3.model.Order;
 public class UserController extends HttpServlet {
 
     private static String INSERT_OR_EDIT = "/WEB-INF/editOrder/editOrder.jsp";
-    private static String LIST_USER = "/listUser.jsp";
+    private static String LIST_USER = "/WEB-INF/profile/profile.jsp";
 
     /*public UserController() {
         super();
@@ -36,25 +36,25 @@ public class UserController extends HttpServlet {
         OrderDaoImpl orderDao = new OrderDaoImpl();
 
         if (action.equalsIgnoreCase("delete")){
-            /*int userId = Integer.parseInt(request.getParameter("userId"));
-            dao.deleteUser(userId);
-            forward = LIST_USER;
-            request.setAttribute("users", dao.getAllUsers());    */
+            int idOrder = Integer.parseInt(request.getParameter("idOrder"));
+            orderDao.delete(idOrder);
+            response.sendRedirect("/Profile");
         } else if (action.equalsIgnoreCase("edit")){
             forward = INSERT_OR_EDIT;
             System.out.println(request.getParameter("idOrder"));
             int idOrder = Integer.parseInt(request.getParameter("idOrder"));
             Order order = orderDao.getByPK(idOrder);
+            System.out.println("----------------------------------");
+            System.out.println(order);
             request.setAttribute("order", order);
+            RequestDispatcher view = request.getRequestDispatcher(forward);
+            view.forward(request, response);
         } else if (action.equalsIgnoreCase("listUser")){
             /*forward = LIST_USER;
             request.setAttribute("users", dao.getAllUsers());*/
         } else {
             /*forward = INSERT_OR_EDIT;*/
         }
-
-        RequestDispatcher view = request.getRequestDispatcher(forward);
-        view.forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

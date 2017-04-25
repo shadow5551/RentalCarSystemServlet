@@ -15,8 +15,14 @@ import java.util.List;
  */
 public class CarDaoImpl extends AbstractDao<Car, Integer>{
 
+
     @Override
-    public String getConditionQuery() {
+    public String getConditionQueryForAllOrders() {
+        return null;
+    }
+
+    @Override
+    public String getConditionQueryForOrder() {
         return null;
     }
 

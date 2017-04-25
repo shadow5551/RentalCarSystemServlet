@@ -1,5 +1,7 @@
 package by.training.nc.dev3.dao;
 
+import by.training.nc.dev3.exception.CustomGenericException;
+
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
@@ -20,7 +22,7 @@ public interface GenericDao<T extends Identified<PK>, PK extends Serializable>{
     void update(T object) throws SQLException;
 
     /** Удаляет запись об объекте из базы данных */
-    void delete(T object) throws SQLException;
+    void delete(int key) throws SQLException;
 
     /** Возвращает список объектов соответствующих всем записям в базе данных */
     List<T> getAll() throws SQLException;

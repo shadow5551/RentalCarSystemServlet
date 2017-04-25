@@ -16,8 +16,13 @@ import java.util.List;
 public class OrderDaoImpl extends AbstractDao<Order, Integer>{
 
     @Override
-    public String getConditionQuery() {
+    public String getConditionQueryForAllOrders() {
         return " WHERE Orders.User_id = ?";
+    }
+
+    @Override
+    public String getConditionQueryForOrder() {
+        return " WHERE Orders.id = ?";
     }
 
     @Override

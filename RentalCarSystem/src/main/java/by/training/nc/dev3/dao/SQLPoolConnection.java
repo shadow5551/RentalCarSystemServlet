@@ -11,7 +11,7 @@ public class SQLPoolConnection {
 
         public static Connection getConnection() throws SQLException, NamingException {
             ic = new InitialContext();
-            ds = (DataSource) ic.lookup("java:/comp/env/jdbc/sakila"); // вместо написать java:/comp/env/jdbc/TestDB
+            ds = (DataSource) ic.lookup("java:/comp/env/jdbc/sakila");
             return ds.getConnection();
         }
 }

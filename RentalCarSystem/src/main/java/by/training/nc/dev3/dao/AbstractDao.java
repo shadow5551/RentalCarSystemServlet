@@ -12,9 +12,14 @@ import java.util.List;
 public abstract class AbstractDao<T extends Identified<PK>, PK extends Integer> implements GenericDao<T, PK> {
 
     /**
-     * WHERE id = ?;
+     * WHERE idUser = ?;
      */
-    public abstract String getConditionQuery();
+    public abstract String getConditionQueryForAllOrders();
+
+    /**
+     * WHERE idOrder = ?;
+     */
+    public abstract String getConditionQueryForOrder();
 
     /**
      * SELECT * FROM [Table]
@@ -61,7 +66,7 @@ public abstract class AbstractDao<T extends Identified<PK>, PK extends Integer> 
         try {
             connection = SQLPoolConnection.getConnection();
             String sql = getSelectQuery();
-            sql += getConditionQuery();
+            sql += getConditionQueryForOrder();
             System.out.println(sql);
             statement = connection.prepareStatement(sql);
             statement.setInt(1, key);
@@ -119,7 +124,7 @@ public abstract class AbstractDao<T extends Identified<PK>, PK extends Integer> 
         try {
             connection = SQLPoolConnection.getConnection();
             String sql = getSelectQuery();
-            sql += getConditionQuery();
+            sql += getConditionQueryForAllOrders();
             System.out.println(sql);
             statement = connection.prepareStatement(sql);
             statement.setInt(1, key);
@@ -180,14 +185,14 @@ public abstract class AbstractDao<T extends Identified<PK>, PK extends Integer> 
     }
 
     @Override
-    public void delete(T object) throws CustomGenericException {
+    public void delete(int key) throws CustomGenericException {
         Connection connection = null;
         PreparedStatement statement = null;
         try{
             connection = SQLPoolConnection.getConnection();
             String sql = getDeleteQuery();
             statement = connection.prepareStatement(sql);
-            statement.setObject(1, object.getId());
+            statement.setObject(1, key);
             int count = statement.executeUpdate();
             if (count != 1) {
                 throw new CustomGenericException("On delete modify more then 1 record: " + count);

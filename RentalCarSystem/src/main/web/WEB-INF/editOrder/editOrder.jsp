@@ -6,14 +6,35 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
     <link type="text/css"
-          href="css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="stylesheet" />
-    <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui-1.8.18.custom.min.js"></script>
+          href="assets/css/jquery-ui-1.8.18.custom.css" rel="stylesheet" />
+    <script type="text/javascript" src="/assets/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery-ui-1.8.18.custom.min.js"></script>
     <title>Add new user</title>
 </head>
 <body>
 
+<script>
+    $(function() {
+        $('input[name=dob]').datepicker();
+    });
+</script>
 
+<form method="POST" action='UserController' name="frmAddUser">
+    User ID : <input type="text" readonly="readonly" name="userid"
+                     value="<c:out value="${order.id}" />" /> <br />
+    First Name : <input
+        type="text" name="firstName"
+        value="<c:out value="${order.price}" />" /> <br />
+    Last Name : <input
+        type="text" name="lastName"
+        value="<c:out value="${user.lastName}" />" /> <br />
+    DOB : <input
+        type="text" name="dob"
+        value="<fmt:formatDate pattern="MM/dd/yyyy" value="${user.dob}" />" /> <br />
+    Email : <input type="text" name="email"
+                   value="<c:out value="${user.email}" />" /> <br /> <input
+        type="submit" value="Submit" />
+</form>
 </form>
 </body>
 </html>

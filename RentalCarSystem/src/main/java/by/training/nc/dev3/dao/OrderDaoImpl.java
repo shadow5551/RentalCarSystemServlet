@@ -13,7 +13,10 @@ public class OrderDaoImpl extends AbstractDao<Order, Integer>{
 
     @Override
     public String getSelectQuery() {
-        return "SELECT idOrder, startDate, endDate, clarification, price,repairPrice,User_idUser,Car_idCar,Status_idStatus FROM Orders ";
+        return "SELECT Orders.idOrder,Orders.startDate,Orders.endDate,Orders.clarification," +
+                "Orders.price,Orders.repairPrice,Cars.pricePerDay,Brands.brand,Brands.model FROM Orders " +
+                "INNER JOIN Cars ON Orders.Car_idCar = Cars.idCar INNER JOIN Brands " +
+                "ON Cars.Brand_idBrand = Brands.idBrand Where Orders.User_idUser = ? ";
     }
 
     @Override
@@ -24,10 +27,7 @@ public class OrderDaoImpl extends AbstractDao<Order, Integer>{
 
     @Override
     public String getUpdateQuery() {
-        return "UPDATE Orders " +
-                "SET startDate = ?, endDate  = ?, clarification = ?, " +
-                "price = ? , repairPrice  = ?, Status_idStatus = ? " +
-                "WHERE idOrder = ?;";
+        return "UPDATE Orders SET  Status_idStatus = ? WHERE idOrder = ?;";
     }
 
     @Override

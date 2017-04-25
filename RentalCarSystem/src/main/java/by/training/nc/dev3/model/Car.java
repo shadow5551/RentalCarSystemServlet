@@ -20,6 +20,9 @@ public class Car implements Identified<Integer> {
         this.pricePerDay = pricePerDay;
     }
 
+    public Car() {
+    }
+
     public Car(String brand, String model, int pricePerDay) {
         this.brand = brand;
         this.model = model;

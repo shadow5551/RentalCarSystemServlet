@@ -29,6 +29,7 @@ public class Profile extends HttpServlet {
         OrderDaoImpl orderDao = new OrderDaoImpl();
         RequestDispatcher dispatcher=getServletContext().getRequestDispatcher( "/WEB-INF/profile/profile.jsp" );
         request.setAttribute("orders", orderDao.getAllBYCondition("WHERE User_idUser = " + request.getSession().getAttribute("currentUserId")));
+        request.setAttribute("cars", orderDao.getAllBYCondition("WHERE User_idUser = " + request.getSession().getAttribute("currentUserId")));
         System.out.println(orderDao.getAllBYCondition("WHERE User_idUser = " + request.getSession().getAttribute("currentUserId")));
         System.out.println(request);
         dispatcher.forward( request, response );

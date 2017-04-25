@@ -8,22 +8,23 @@ import java.util.Objects;
 
 public class Order implements Identified<Integer> {
     private int id;
-    private int idCar;
-    private int idStatus;
-    private int idUser;
+    private OrderStatus status;
+    private Car car;
+    private User user;
     private Date beginDate;
     private Date refundDate;
     private String clarification;
     private int price;
     private int repairPrice;
 
-    public Order(int id, int idCar, int idStatus, int idUser, Date beginDate, Date refundDate, int price, int repairPrice) {
+    public Order(int id, OrderStatus status, Car car, User user, Date beginDate, Date refundDate, String clarification, int price, int repairPrice) {
         this.id = id;
-        this.idCar = idCar;
-        this.idStatus = idStatus;
-        this.idUser = idUser;
+        this.status = status;
+        this.car = car;
+        this.user = user;
         this.beginDate = beginDate;
         this.refundDate = refundDate;
+        this.clarification = clarification;
         this.price = price;
         this.repairPrice = repairPrice;
     }
@@ -36,28 +37,28 @@ public class Order implements Identified<Integer> {
         this.id = id;
     }
 
-    public int getIdCar() {
-        return idCar;
+    public OrderStatus getStatus() {
+        return status;
     }
 
-    public void setIdCar(int idCar) {
-        this.idCar = idCar;
+    public void setStatus(OrderStatus status) {
+        this.status = status;
     }
 
-    public int getIdStatus() {
-        return idStatus;
+    public Car getCar() {
+        return car;
     }
 
-    public void setIdStatus(int idStatus) {
-        this.idStatus = idStatus;
+    public void setCar(Car car) {
+        this.car = car;
     }
 
-    public int getIdUser() {
-        return idUser;
+    public User getUser() {
+        return user;
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Date getBeginDate() {

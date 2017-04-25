@@ -39,12 +39,14 @@
             <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
+                    <th>Brand</th>
+                    <th>Model</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Clarification</th>
+                    <th>Price</th>
+                    <th>Repair Price</th>
+                    <th>Status</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
@@ -52,12 +54,14 @@
 
                 <tfoot>
                 <tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
+                    <th>Brand</th>
+                    <th>Model</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Clarification</th>
+                    <th>Price</th>
+                    <th>Repair Price</th>
+                    <th>Status</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>

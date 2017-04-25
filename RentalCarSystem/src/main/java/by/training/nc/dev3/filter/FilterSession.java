@@ -17,7 +17,7 @@ public class FilterSession implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponce= (HttpServletResponse) response;
-        if (httpRequest.getSession().getAttribute("login") != null) {
+        if (httpRequest.getSession().getAttribute("currentUserId") != null) {
             filterChain.doFilter(request, response);
         } else {
             httpResponce.sendRedirect("/Main");

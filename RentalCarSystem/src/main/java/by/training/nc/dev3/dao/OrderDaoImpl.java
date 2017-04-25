@@ -14,9 +14,11 @@ public class OrderDaoImpl extends AbstractDao<Order, Integer>{
     @Override
     public String getSelectQuery() {
         return "SELECT Orders.idOrder,Orders.startDate,Orders.endDate,Orders.clarification," +
-                "Orders.price,Orders.repairPrice,Cars.pricePerDay,Brands.brand,Brands.model FROM Orders " +
-                "INNER JOIN Cars ON Orders.Car_idCar = Cars.idCar INNER JOIN Brands " +
-                "ON Cars.Brand_idBrand = Brands.idBrand Where Orders.User_idUser = ? ";
+                "Orders.price,Orders.repairPrice,Cars.pricePerDay,Brands.brand,Brands.model,Statuses.status FROM Orders " +
+                "INNER JOIN Cars ON Orders.Car_idCar = Cars.idCar " +
+                "INNER JOIN Brands ON Cars.Brand_idBrand = Brands.idBrand " +
+                "INNER JOIN Statuses ON Orders.Status_idStatus = Statuses.idStatus" +
+                "Where Orders.User_idUser = ? ";
     }
 
     @Override
@@ -47,6 +49,7 @@ public class OrderDaoImpl extends AbstractDao<Order, Integer>{
                 order.setClarification(rs.getString("clarification"));
                 order.setPrice(rs.getInt("price"));
                 order.setRepairPrice(rs.getInt("repairPrice"));
+                order.setCar();
                 order.setIdUser(rs.getInt("User_idUser"));
                 order.setIdCar(rs.getInt("Car_idCar"));
                 order.setIdStatus(rs.getInt("Status_idStatus"));

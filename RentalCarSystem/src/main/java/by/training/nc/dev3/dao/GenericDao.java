@@ -7,7 +7,8 @@ import java.util.List;
 
 public interface GenericDao<T extends Identified<PK>, PK extends Serializable>{
 
-    List<T> getAllBYCondition(String sqlAdd);
+
+    List<T> getAllBYCondition(int key);
 
     /** Создает новую запись и соответствующий ей объект */
     boolean create(T object) throws SQLException;

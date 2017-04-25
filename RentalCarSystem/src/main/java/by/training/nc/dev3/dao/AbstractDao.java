@@ -12,6 +12,11 @@ import java.util.List;
 public abstract class AbstractDao<T extends Identified<PK>, PK extends Integer> implements GenericDao<T, PK> {
 
     /**
+     * WHERE id = ?;
+     */
+    public abstract String getConditionQuery();
+
+    /**
      * SELECT * FROM [Table]
      */
     public abstract String getSelectQuery();
@@ -56,7 +61,8 @@ public abstract class AbstractDao<T extends Identified<PK>, PK extends Integer> 
         try {
             connection = SQLPoolConnection.getConnection();
             String sql = getSelectQuery();
-            sql += " WHERE id = ?";
+            sql += getConditionQuery();
+            System.out.println(sql);
             statement = connection.prepareStatement(sql);
             statement.setInt(1, key);
             System.out.println(statement);
@@ -105,7 +111,7 @@ public abstract class AbstractDao<T extends Identified<PK>, PK extends Integer> 
     }
 
     @Override
-    public List<T> getAllBYCondition(String sqlAdd) {
+    public List<T> getAllBYCondition(int key) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet rs = null;
@@ -113,9 +119,11 @@ public abstract class AbstractDao<T extends Identified<PK>, PK extends Integer> 
         try {
             connection = SQLPoolConnection.getConnection();
             String sql = getSelectQuery();
-            sql += sqlAdd;
+            sql += getConditionQuery();
             System.out.println(sql);
             statement = connection.prepareStatement(sql);
+            statement.setInt(1, key);
+            System.out.println(statement);
             rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (SQLException | NamingException e) {

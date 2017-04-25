@@ -72,12 +72,14 @@
                 <tr>
                     <td>UI</td>
                     <td><c:out value="${order.price}" /></td>
-                    <td>Edinburgh</td>
+                    <td><c:out value="${order.id}"/></td>
                     <td>61</td>
                     <td>2011/04/25</td>
                     <td>$320,800</td>
-                    <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                    <td><a href="UserController?action=edit&idOrder=<c:out value="${order.id}"/>">Update</a></td>
+                    <!--<td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
                     <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                -->
                 </tr>
                 </c:forEach>
                 </tbody>

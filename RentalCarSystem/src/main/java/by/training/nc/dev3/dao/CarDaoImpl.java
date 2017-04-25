@@ -16,9 +16,14 @@ import java.util.List;
 public class CarDaoImpl extends AbstractDao<Car, Integer>{
 
     @Override
+    public String getConditionQuery() {
+        return null;
+    }
+
+    @Override
     public String getSelectQuery() {
-        return "SELECT Cars.idCar,Cars.pricePerDay,Brands.brand,Brands.model " +
-                "FROM Cars INNER JOIN Brands ON Cars.Brand_idBrand = Brands.idBrand ";
+        return "SELECT Cars.id,Cars.pricePerDay,Brands.brand,Brands.model " +
+                "FROM Cars INNER JOIN Brands ON Cars.Brand_id = Brands.id ";
     }
 
     @Override
@@ -29,13 +34,13 @@ public class CarDaoImpl extends AbstractDao<Car, Integer>{
 
     @Override
     public String getUpdateQuery() {
-        return "UPDATE Brands  SET brand = ?, model  = ? WHERE idBrand = ? ;" +
-        "UPDATE Cars SET pricePerDay = ? WHERE Brand_idBrand = ? ;";
+        return "UPDATE Brands  SET brand = ?, model  = ? WHERE id = ? ;" +
+        "UPDATE Cars SET pricePerDay = ? WHERE Brand_id = ? ;";
     }
 
     @Override
     public String getDeleteQuery() {
-        return "DELETE FROM Car WHERE idCar= ? ;";
+        return "DELETE FROM Car WHERE id= ? ;";
     }
 
 

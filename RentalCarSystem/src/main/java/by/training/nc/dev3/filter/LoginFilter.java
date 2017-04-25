@@ -24,7 +24,6 @@ public class    LoginFilter implements Filter {
     }
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
-        System.out.println("LOGIN");
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         if (httpRequest.getMethod().equals("POST")) {
             String login = request.getParameter("login");

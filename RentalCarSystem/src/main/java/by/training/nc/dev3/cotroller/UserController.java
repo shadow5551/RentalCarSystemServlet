@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import by.training.nc.dev3.dao.OrderDaoImpl;
 import by.training.nc.dev3.model.Order;
+import by.training.nc.dev3.model.OrderStatus;
 
 @WebServlet(name = "UserController", urlPatterns =
         {
@@ -31,7 +32,7 @@ public class UserController extends HttpServlet {
     }*/
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String forward="";
+        String forward;
         String action = request.getParameter("action");
         OrderDaoImpl orderDao = new OrderDaoImpl();
 
@@ -44,20 +45,22 @@ public class UserController extends HttpServlet {
             System.out.println(request.getParameter("idOrder"));
             int idOrder = Integer.parseInt(request.getParameter("idOrder"));
             Order order = orderDao.getByPK(idOrder);
-            System.out.println("----------------------------------");
-            System.out.println(order);
             request.setAttribute("order", order);
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
-        } else if (action.equalsIgnoreCase("listUser")){
-            /*forward = LIST_USER;
-            request.setAttribute("users", dao.getAllUsers());*/
-        } else {
-            /*forward = INSERT_OR_EDIT;*/
         }
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        OrderDaoImpl orderDao = new OrderDaoImpl();
+        int idOrder = Integer.parseInt(request.getParameter("idOrder"));
+        Order order = orderDao.getByPK(idOrder);
+        order.setStatus(OrderStatus.valueOf(request.getParameter("firstName")));
+        if (OrderStatus.PROCESS == OrderStatus.valueOf(request.getParameter("firstName"))){
+
+        }
+        orderDao.update(order);
+
         /*User user = new User();
         user.setFirstName(request.getParameter("firstName"));
         user.setLastName(request.getParameter("lastName"));

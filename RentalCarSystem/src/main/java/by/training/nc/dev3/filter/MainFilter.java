@@ -14,8 +14,6 @@ import java.io.IOException;
 @WebFilter("/*")
 public class MainFilter implements Filter {
 
-    private HttpSession session;
-
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -24,8 +22,7 @@ public class MainFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
-        System.out.println("Filter");
-        session = request.getSession();
+        HttpSession session = request.getSession();
         servletRequest.setAttribute("locale", Locale.getLang(servletRequest));
         filterChain.doFilter(servletRequest,servletResponse);
     }

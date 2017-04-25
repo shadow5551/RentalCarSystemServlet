@@ -42,12 +42,13 @@ public class OrderDaoImpl extends AbstractDao<Order, Integer>{
 
     @Override
     public String getUpdateQuery() {
-        return "UPDATE Orders SET  Status_id = ? WHERE id = ?;";
+        return "UPDATE Orders SET Orders.startDate= ?, Orders.endDate= ?, Orders.clarification= ?, " +
+                "Orders.price= ?, Orders.repairPrice = ? , Status_id = ?  WHERE id = ?;";
     }
 
     @Override
     public String getDeleteQuery() {
-        return "DELETE FROM Orders WHERE id= ?;";
+        return "DELETE FROM Orders WHERE Orders.id= ?;";
     }
 
 
@@ -104,8 +105,8 @@ public class OrderDaoImpl extends AbstractDao<Order, Integer>{
             statement.setString(3, object.getClarification());
             statement.setInt(4, object.getPrice());
             statement.setInt(5,object.getRepairPrice());
-            statement.setInt(6,object.getUser().getId());
-            statement.setInt(7,object.getCar().getId());
+            /*statement.setInt(6,object.getUser().getId());
+            statement.setInt(7,object.getCar().getId());*/
             statement.setString(8,object.getStatus().toString());
             statement.setInt(5, object.getId());
         } catch (Exception e) {

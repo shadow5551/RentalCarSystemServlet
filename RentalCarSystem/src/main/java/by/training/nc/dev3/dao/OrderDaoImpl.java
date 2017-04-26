@@ -17,7 +17,7 @@ public class OrderDaoImpl extends AbstractDao<Order, Integer>{
 
     @Override
     public String getConditionQueryForAllOrders() {
-        return " WHERE Orders.User_id = ?";
+        return " WHERE Orders.User_id = ? AND Status_id = ?";
     }
 
     @Override

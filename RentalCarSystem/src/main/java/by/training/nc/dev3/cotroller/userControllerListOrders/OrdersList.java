@@ -1,8 +1,5 @@
-package by.training.nc.dev3.cotroller;
+package by.training.nc.dev3.cotroller.userControllerListOrders;
 
-
-
-import by.training.nc.dev3.cotroller.userControllerListOrders.*;
 import by.training.nc.dev3.dao.OrderDaoImpl;
 import by.training.nc.dev3.dao.StatusDaoImpl;
 import by.training.nc.dev3.model.OrderStatus;
@@ -14,24 +11,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by dima on 18.4.17.
- */
-@WebServlet(name = "Profile", urlPatterns =
+@WebServlet(name = "Orders", urlPatterns =
         {
-                "/Profile"
+                "/Orders"
         })
-public class Profile extends HttpServlet {
-
+public class OrdersList extends HttpServlet {
 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException
     {
-        /*String forward;
+        String forward;
         String action = request.getParameter("action");
         OrderDaoImpl orderDao = new OrderDaoImpl();
         StatusDaoImpl statusDao = new StatusDaoImpl();
@@ -62,13 +54,13 @@ public class Profile extends HttpServlet {
             setRequestOrdersByStatus(map.get(OrderStatus.CLOSED),orderDao,request);
             Closing closing = new Closing();
             closing.doGet(request,response);
-        }*/
+        }
 
-        RequestDispatcher dispatcher=getServletContext().getRequestDispatcher( "/WEB-INF/profile/profile.jsp" );
+        RequestDispatcher dispatcher=getServletContext().getRequestDispatcher( "/WEB-INF/orders/ordersList.jsp" );
         //request.setAttribute("orders", orderDao.getAllBYCondition((Integer) request.getSession().getAttribute("currentUserId")));
-       // request.setAttribute("cars", orderDao.getAllBYCondition("WHERE User_idUser = " + request.getSession().getAttribute("currentUserId")));
-       // System.out.println(orderDao.getAllBYCondition((Integer) request.getSession().getAttribute("currentUserId")));
-        /*System.out.println(request);*/
+        // request.setAttribute("cars", orderDao.getAllBYCondition("WHERE User_idUser = " + request.getSession().getAttribute("currentUserId")));
+        // System.out.println(orderDao.getAllBYCondition((Integer) request.getSession().getAttribute("currentUserId")));
+        System.out.println(request);
         dispatcher.forward( request, response );
     }
 
@@ -85,5 +77,8 @@ public class Profile extends HttpServlet {
        dispatcher.forward( request, response );*/
     }
 
+    private void setRequestOrdersByStatus(int id , OrderDaoImpl orderDao , HttpServletRequest request){
+        request.setAttribute("orders", orderDao.getAllBYCondition((Integer) request.getSession().getAttribute("currentUserId"),id));
 
+    }
 }

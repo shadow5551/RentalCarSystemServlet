@@ -20,7 +20,7 @@
 </script>
 
 <form method="POST" action='UserController' name="frmAddUser">
-    User ID : <input type="text" readonly="readonly" name="userid"
+    User ID : <input type="text" readonly="readonly" name="idOrder"
                      value="<c:out value="${order.id}" />" /> <br />
     First Name : <input
         type="text" name="firstName"

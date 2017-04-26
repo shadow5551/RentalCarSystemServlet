@@ -116,7 +116,7 @@ public abstract class AbstractDao<T extends Identified<PK>, PK extends Integer> 
     }
 
     @Override
-    public List<T> getAllBYCondition(int key) {
+    public List<T> getAllBYCondition(int id, int key) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet rs = null;
@@ -127,8 +127,8 @@ public abstract class AbstractDao<T extends Identified<PK>, PK extends Integer> 
             sql += getConditionQueryForAllOrders();
             System.out.println(sql);
             statement = connection.prepareStatement(sql);
-            statement.setInt(1, key);
-            System.out.println(statement);
+            statement.setInt(1, id);
+            statement.setInt(2, key);
             rs = statement.executeQuery();
             list = parseResultSet(rs);
         } catch (SQLException | NamingException e) {
@@ -205,7 +205,7 @@ public abstract class AbstractDao<T extends Identified<PK>, PK extends Integer> 
         }
     }
 
-    private void closeConnection(Connection connection) {
+    static void closeConnection(Connection connection) {
         if (connection != null) {
             try {
                 connection.close();
@@ -215,7 +215,7 @@ public abstract class AbstractDao<T extends Identified<PK>, PK extends Integer> 
         }
     }
 
-    private void closeStatement(Statement statement) {
+    static void closeStatement(Statement statement) {
         if (statement != null) {
             try {
                 statement.close();
@@ -225,7 +225,7 @@ public abstract class AbstractDao<T extends Identified<PK>, PK extends Integer> 
         }
     }
 
-    private void closeResultSet(ResultSet resultSet) {
+    static void closeResultSet(ResultSet resultSet) {
         if (resultSet != null) {
             try {
                 resultSet.close();
